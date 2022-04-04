@@ -4,6 +4,9 @@ import data from "./data/mock.json";
 const app = express();
 const PORT = 3000;
 
+// Use the public folder at the root diretory
+app.use(express.static("public"));
+
 // GET
 app.get("/", (request, response) => {
   response.json(data);
