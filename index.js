@@ -1,4 +1,5 @@
 import express from "express";
+import { response } from "express";
 import data from "./data/mock.json";
 
 const app = express();
@@ -9,6 +10,10 @@ app.use(express.static("public"));
 
 // Use  the images folder at route /images
 app.use("/images", express.static("images"));
+
+app.get("/class/:id", (request, response) => {
+  console.log(request.params);
+});
 
 // GET
 app.get("/", (request, response) => {
@@ -32,5 +37,5 @@ app.delete("/delete", (request, response) => {
 
 app.listen(PORT, () => {
   console.log(`The server is running at port ${PORT}!`);
-  console.log(data);
+  //   console.log(data);
 });
