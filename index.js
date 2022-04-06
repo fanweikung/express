@@ -23,6 +23,18 @@ app.get("/", (request, response) => {
   response.json(data);
 });
 
+// GET with next()
+app.get(
+  "/next",
+  (request, response, next) => {
+    console.log("the response will be sent by the next function");
+    next();
+  },
+  (request, response) => {
+    response.send("I just setup a route with a second callback :)");
+  }
+);
+
 // POST
 app.post("/create", (request, response) => {
   response.send("This is a POST request at /create");
