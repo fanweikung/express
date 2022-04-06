@@ -12,7 +12,10 @@ app.use(express.static("public"));
 app.use("/images", express.static("images"));
 
 app.get("/class/:id", (request, response) => {
-  console.log(request.params);
+  const studentId = Number(request.params.id);
+
+  const student = data.filter((student) => student.id === studentId);
+  response.send(student);
 });
 
 // GET
