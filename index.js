@@ -23,6 +23,16 @@ app.get("/", (request, response) => {
   response.json(data);
 });
 
+// GET with download method
+app.get("/download", (request, response) => {
+  response.download("./images/mountains_2.jpeg");
+});
+
+// GET with redirect method
+app.get("/redirect", (request, response) => {
+  response.redirect("https://linkedin.com");
+});
+
 // GET with next()
 app.get(
   "/next",
