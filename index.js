@@ -8,8 +8,12 @@ const PORT = 3000;
 // Use the public folder at the root diretory
 app.use(express.static("public"));
 
-// Use  the images folder at route /images
+// Use the images folder at route /images
 app.use("/images", express.static("images"));
+
+// Use express.json and express.urlencoded
+//app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.get("/class/:id", (request, response) => {
   const studentId = Number(request.params.id);
@@ -21,6 +25,12 @@ app.get("/class/:id", (request, response) => {
 // GET
 app.get("/", (request, response) => {
   response.json(data);
+});
+
+// POST - express.json and express.urlencoded
+app.post("/item", (request, response) => {
+  console.log(request.body);
+  response.send(request.body);
 });
 
 // GET with download method
